@@ -1,0 +1,6 @@
+{
+  "name": "@requirementiq/shared-types",
+  "version": "0.0.1",
+  "main": "index.d.ts",
+  "private": true
+}

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+/* Minimal palette placeholders */
+.text-muted-foreground { color: #64748b }
