@@ -13,7 +13,11 @@ class ProjectRepository:
         return self.db.query(Project).filter(Project.id == project_id, Project.deleted_at.is_(None)).first()
 
     def get_project_by_title(self, company_id: UUID, title: str) -> Project | None:
-        return self.db.query(Project).filter(Project.company_id == company_id, Project.title == title, Project.deleted_at.is_(None)).first()
+        return (
+            self.db.query(Project)
+            .filter(Project.company_id == company_id, Project.deleted_at.is_(None), func.lower(Project.title) == title.lower())
+            .first()
+        )
 
     def list_projects(self, company_id: UUID, limit: int = 10, offset: int = 0, status: str | None = None, priority: str | None = None, industry: str | None = None, search: str | None = None, sort_by: str | None = None, sort_order: str = "asc") -> tuple[list[Project], int]:
         query = self.db.query(Project).filter(Project.company_id == company_id, Project.deleted_at.is_(None))

@@ -6,6 +6,10 @@ build/
 /.pytest_cache
 __pycache__/
 *.py[cod]
+coverage/
+*.sqlite
+*.db
+*.log
 .DS_Store
 /.idea
 .vscode

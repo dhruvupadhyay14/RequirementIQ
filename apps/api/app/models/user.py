@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from enum import Enum as PyEnum
+from typing import Optional
 from sqlalchemy import String, DateTime, ForeignKey, Boolean, Enum
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
@@ -34,7 +35,7 @@ class User(Base):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
-    phone: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    phone: Mapped[Optional[str]] = mapped_column(String(40), nullable=True)
     role: Mapped[UserRole] = mapped_column(Enum(UserRole), default=UserRole.COMPANY_ADMIN, nullable=False)
     status: Mapped[UserStatus] = mapped_column(Enum(UserStatus), default=UserStatus.PENDING, nullable=False)
     is_email_verified: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)

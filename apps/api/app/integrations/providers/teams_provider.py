@@ -1,0 +1,17 @@
+from app.integrations.providers.meeting_provider import MeetingProvider
+
+
+class TeamsProvider:
+    provider_name = "MICROSOFT_TEAMS"
+
+    def create_meeting(self, data: dict) -> dict:
+        raise NotImplementedError("Microsoft Teams provider is a placeholder")
+
+    def update_meeting(self, provider_meeting_id: str, data: dict) -> dict:
+        raise NotImplementedError("Microsoft Teams provider is a placeholder")
+
+    def cancel_meeting(self, provider_meeting_id: str) -> dict:
+        raise NotImplementedError("Microsoft Teams provider is a placeholder")
+
+    def get_meeting(self, provider_meeting_id: str) -> dict:
+        raise NotImplementedError("Microsoft Teams provider is a placeholder")
