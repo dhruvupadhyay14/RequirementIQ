@@ -49,3 +49,5 @@ class Project(Base):
     deleted_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
 
     meetings: Mapped[list["Meeting"]] = relationship(back_populates="project", cascade="all, delete-orphan")
+    requirements: Mapped[list["Requirement"]] = relationship(back_populates="project", cascade="all, delete-orphan")
+    documents: Mapped[list["Document"]] = relationship(back_populates="project", cascade="all, delete-orphan")

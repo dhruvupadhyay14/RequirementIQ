@@ -46,3 +46,7 @@ class Meeting(Base):
 
     project: Mapped["Project"] = relationship(back_populates="meetings")
     participants: Mapped[list["Participant"]] = relationship(back_populates="meeting", cascade="all, delete-orphan")
+    conference_records: Mapped[list["ConferenceRecord"]] = relationship(back_populates="meeting", cascade="all, delete-orphan")
+    requirements: Mapped[list["Requirement"]] = relationship(back_populates="meeting", cascade="all, delete-orphan")
+    ai_questions: Mapped[list["AIQuestion"]] = relationship(back_populates="meeting", cascade="all, delete-orphan")
+    documents: Mapped[list["Document"]] = relationship(back_populates="meeting", cascade="all, delete-orphan")

@@ -6,6 +6,8 @@ import ForgotPassword from './pages/ForgotPassword'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
+import AIAnalysis from './pages/AIAnalysis'
+import Documentation from './pages/Documentation'
 import { useAuthStore } from './store/authStore'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -30,6 +32,8 @@ export default function App() {
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="ai-analysis" element={<AIAnalysis />} />
+        <Route path="documentation" element={<Documentation />} />
       </Route>
     </Routes>
   )

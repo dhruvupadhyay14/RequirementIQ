@@ -11,6 +11,10 @@ from app.models.user import User
 from app.models.project import Project
 from app.models.meeting import Meeting
 from app.models.participant import Participant
+from app.models.google_account import GoogleAccount
+from app.models.conference_record import ConferenceRecord
+from app.models.requirement import Requirement, AIQuestion
+from app.models.document import Document
 
 config = context.config
 

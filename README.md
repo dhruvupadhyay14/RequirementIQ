@@ -32,3 +32,30 @@ AI-powered Project Discovery Platform.
 - apps/web/src/pages
 - apps/web/src/store
 - apps/web/src/lib
+
+## AI Engine Architecture
+
+The AI engine is implemented as a modular pipeline that:
+- accepts meeting context or transcript text,
+- extracts functional, non-functional, business, and technical requirements,
+- detects missing information such as target users, roles, integrations, and timeline,
+- generates follow-up questions for requirement gathering,
+- persists the results in the requirements and ai_questions tables.
+
+## Supported Models
+
+The initial production-ready implementation uses a deterministic fallback engine so the workflow remains usable without external API keys. The architecture is compatible with OpenAI, Google Gemini, and Claude-style providers through the AI_PROVIDER setting.
+
+## Environment Variables
+
+Set the following values before running the API:
+- DATABASE_URL
+- JWT_SECRET
+- AI_PROVIDER
+- OPENAI_API_KEY (optional)
+- GOOGLE_API_KEY (optional)
+- ANTHROPIC_API_KEY (optional)
+
+## Documentation Engine
+
+Generate versioned SRS, BRD, Minutes of Meeting, Client Requirement Summary, and Technical Requirement documents from meeting metadata, transcripts, approved requirements, and answered discovery questions. Documents can be approved, regenerated without losing earlier versions, and exported as PDF, DOCX, or Markdown.

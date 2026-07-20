@@ -10,6 +10,9 @@ from app.models.project import Project
 from app.routers.auth import router as auth_router
 from app.routers.project import router as project_router
 from app.routers.meeting import router as meeting_router
+from app.routers.google import router as google_router
+from app.routers.ai import router as ai_router
+from app.routers.documents import router as documents_router, detail_router as document_router
 from app.core.logging import configure_logging
 from app.core.constants import VERSION
 
@@ -30,6 +33,10 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(project_router, prefix="/api/v1")
 app.include_router(meeting_router, prefix="/api/v1")
+app.include_router(google_router, prefix="/api/v1")
+app.include_router(ai_router, prefix="/api/v1")
+app.include_router(documents_router, prefix="/api/v1")
+app.include_router(document_router, prefix="/api/v1")
 
 
 @app.get("/health")
