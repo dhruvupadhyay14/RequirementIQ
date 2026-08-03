@@ -6,6 +6,7 @@ from app.models.meeting import Meeting
 from app.models.project import Project
 from app.models.requirement import AIQuestion, Requirement
 from app.repositories.document_repository import DocumentRepository
+from app.rag.knowledge_service import KnowledgeService
 
 
 class DocumentService:
@@ -17,7 +18,8 @@ class DocumentService:
         requirements = self.db.query(Requirement).filter(Requirement.meeting_id == meeting_id, Requirement.status == "approved").all()
         questions = self.db.query(AIQuestion).filter(AIQuestion.meeting_id == meeting_id).all()
         transcript = next((record.transcript for record in sorted(meeting.conference_records, key=lambda r: r.updated_at, reverse=True) if record.transcript), None)
-        title, content = self.generator.generate(document_type, {"project": meeting.project, "meeting": meeting, "requirements": requirements, "questions": questions, "participants": meeting.participants, "transcript": transcript})
+        knowledge_context = KnowledgeService(self.db).context(meeting.project_id, meeting.title)
+        title, content = self.generator.generate(document_type, {"project": meeting.project, "meeting": meeting, "requirements": requirements, "questions": questions, "participants": meeting.participants, "transcript": transcript, "knowledge_context": knowledge_context})
         item = self.repository.create({"project_id": meeting.project_id, "meeting_id": meeting_id, "document_type": document_type, "title": title, "content": content, "version": self.repository.next_version(meeting_id, document_type), "status": "draft", "created_by": user_id})
         self.db.commit(); self.db.refresh(item); return item
 

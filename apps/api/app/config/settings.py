@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_SECRET: str | None = None
     GOOGLE_REDIRECT_URI: str | None = None
     CHROMA_HOST: str | None = None
+    CHROMA_COLLECTION: str = "requirementiq_knowledge"
+    EMBEDDING_PROVIDER: str = "fallback"
+    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
     CORS_ORIGINS: List[str] = ["*"]
     PYTHON_ENV: str = "development"
 

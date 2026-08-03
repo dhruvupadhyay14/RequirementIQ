@@ -10,6 +10,8 @@ export default function Sidebar() {
         <Link className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" to="/profile">Profile</Link>
         <Link className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" to="/ai-analysis">AI Analysis</Link>
         <Link className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" to="/documentation">Documentation</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" to="/knowledge-base">Knowledge Base</Link>
+        <Link className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100" to="/workspace-intelligence">Workspace Intelligence</Link>
       </nav>
     </aside>
   )

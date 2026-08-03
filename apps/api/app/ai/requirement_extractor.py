@@ -22,9 +22,10 @@ class RequirementExtractor:
         self.classifier = classifier or RequirementClassifier(self.llm_service, self.prompt_manager)
         self.question_generator = question_generator or QuestionGenerator(self.llm_service, self.prompt_manager)
 
-    def extract_requirements(self, transcript: str) -> dict[str, Any]:
+    def extract_requirements(self, transcript: str, knowledge_context: str = "") -> dict[str, Any]:
         prompt = self.prompt_manager.get_template("requirement_extraction").template
-        result = self.llm_service.generate(prompt, transcript)
+        enriched_transcript = f"{transcript}\n\nRelevant project memory:\n{knowledge_context}" if knowledge_context else transcript
+        result = self.llm_service.generate(prompt, enriched_transcript)
 
         if not isinstance(result, dict) or not result:
             result = self._heuristic_result(transcript)

@@ -15,6 +15,7 @@ from app.models.google_account import GoogleAccount
 from app.models.conference_record import ConferenceRecord
 from app.models.requirement import Requirement, AIQuestion
 from app.models.document import Document
+from app.models.knowledge_chunk import KnowledgeChunk
 
 config = context.config
 

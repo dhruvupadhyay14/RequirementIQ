@@ -12,6 +12,8 @@ class TemplateManager:
 
     def _sections(self, kind: str, ctx: dict[str, Any]) -> list[tuple[str, str]]:
         overview = f"**Project:** {ctx['project'].title}\n\n**Meeting:** {ctx['meeting'].title}\n\n**Generated from:** approved discovery findings and meeting context."
+        if ctx.get("knowledge_context"):
+            overview += f"\n\n**Relevant project memory:**\n{ctx['knowledge_context']}"
         if kind == "srs":
             return [("1. Introduction", overview), ("2. Purpose", self._purpose(ctx)), ("3. Scope", ctx['project'].description or "Scope is to be confirmed during discovery."), ("4. Functional Requirements", self._requirements(ctx, "functional")), ("5. Non Functional Requirements", self._requirements(ctx, "non_functional")), ("6. System Features", self._requirements(ctx, "technical")), ("7. Constraints", self._constraints(ctx)), ("8. Assumptions", self._assumptions(ctx)), ("9. Future Scope", "Items not approved for the current scope should be assessed in a future phase.")]
         if kind == "brd":

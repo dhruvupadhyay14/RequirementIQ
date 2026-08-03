@@ -8,6 +8,8 @@ import Profile from './pages/Profile'
 import Register from './pages/Register'
 import AIAnalysis from './pages/AIAnalysis'
 import Documentation from './pages/Documentation'
+import KnowledgeBase from './pages/KnowledgeBase'
+import WorkspaceIntelligence from './pages/WorkspaceIntelligence'
 import { useAuthStore } from './store/authStore'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -34,6 +36,8 @@ export default function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="ai-analysis" element={<AIAnalysis />} />
         <Route path="documentation" element={<Documentation />} />
+        <Route path="knowledge-base" element={<KnowledgeBase />} />
+        <Route path="workspace-intelligence" element={<WorkspaceIntelligence />} />
       </Route>
     </Routes>
   )

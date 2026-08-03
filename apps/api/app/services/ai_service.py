@@ -4,6 +4,7 @@ from app.ai.requirement_extractor import RequirementExtractor
 from app.repositories.ai_repository import AIRepository
 from app.models.meeting import Meeting
 from app.models.conference_record import ConferenceRecord
+from app.rag.knowledge_service import KnowledgeService
 
 
 class AIService:
@@ -23,7 +24,8 @@ class AIService:
                 status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
                 detail="No meeting transcript, agenda, or description is available for analysis",
             )
-        analysis = self.extractor.extract_requirements(transcript_payload)
+        knowledge_context = KnowledgeService(self.db).context(meeting.project_id, transcript_payload)
+        analysis = self.extractor.extract_requirements(transcript_payload, knowledge_context)
 
         requirements = []
         for category_key, category_name in [

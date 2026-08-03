@@ -59,3 +59,11 @@ Set the following values before running the API:
 ## Documentation Engine
 
 Generate versioned SRS, BRD, Minutes of Meeting, Client Requirement Summary, and Technical Requirement documents from meeting metadata, transcripts, approved requirements, and answered discovery questions. Documents can be approved, regenerated without losing earlier versions, and exported as PDF, DOCX, or Markdown.
+
+## Knowledge Base and RAG Engine
+
+The Knowledge Base indexes project meeting transcripts, requirements, answered questions, documents, and project summaries into project-isolated ChromaDB collections. The retrieval pipeline chunks content, creates configurable embeddings, performs semantic search, and supplies relevant project memory to requirement analysis and document generation. Configure `CHROMA_HOST` and set `EMBEDDING_PROVIDER=openai` with `OPENAI_API_KEY` for OpenAI embeddings; the deterministic fallback supports local development and tests.
+
+## Workspace Intelligence
+
+Workspace Intelligence stores isolated workspace preferences, indexes uploaded PDF/DOCX/TXT/Markdown knowledge, learns from approved requirements, and applies reusable domain playbooks to discovery meetings.

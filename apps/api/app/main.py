@@ -13,6 +13,9 @@ from app.routers.meeting import router as meeting_router
 from app.routers.google import router as google_router
 from app.routers.ai import router as ai_router
 from app.routers.documents import router as documents_router, detail_router as document_router
+from app.routers.rag import router as rag_router
+from app.routers.workspace_ai import workspace_router, playbook_router
+from app.routers.dashboard import router as dashboard_router
 from app.core.logging import configure_logging
 from app.core.constants import VERSION
 
@@ -37,6 +40,10 @@ app.include_router(google_router, prefix="/api/v1")
 app.include_router(ai_router, prefix="/api/v1")
 app.include_router(documents_router, prefix="/api/v1")
 app.include_router(document_router, prefix="/api/v1")
+app.include_router(rag_router, prefix="/api/v1")
+app.include_router(workspace_router, prefix="/api/v1")
+app.include_router(playbook_router, prefix="/api/v1")
+app.include_router(dashboard_router, prefix="/api/v1")
 
 
 @app.get("/health")
